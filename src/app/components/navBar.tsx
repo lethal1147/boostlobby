@@ -1,3 +1,5 @@
+"use client";
+
 import {
 	Select,
 	SelectContent,
@@ -8,6 +10,9 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../config/configureStore";
+import { changeCurrentGame } from "../store/currentGameSlice";
 import { Button } from "./button";
 
 type Props = {
@@ -15,6 +20,13 @@ type Props = {
 };
 
 export const NavBar = ({ isAuthen = false }: Props) => {
+	const currentGame = useSelector(
+		(state: RootState) => state.currentGame.currentGame,
+	);
+	const dispatch = useDispatch();
+	const onChangeHandler = (value: string) => {
+		dispatch(changeCurrentGame({ currentGame: value }));
+	};
 	return (
 		<nav className="flex justify-between items-center bg-main-gray px-5 py-3">
 			<div className="flex items-center gap-3">
@@ -24,7 +36,10 @@ export const NavBar = ({ isAuthen = false }: Props) => {
 				</h2>
 			</div>
 			<div className="flex items-center gap-5 text-white">
-				<Select>
+				<Select
+					defaultValue={currentGame}
+					onValueChange={(e) => onChangeHandler(e)}
+				>
 					<SelectTrigger className="border-none text-white text-md hover:underline-gray transition-all">
 						<SelectValue placeholder="Select your game" />
 					</SelectTrigger>
