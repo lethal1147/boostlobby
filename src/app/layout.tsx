@@ -21,10 +21,10 @@ export default function RootLayout({
 			<html lang="en">
 				<body className={inter.className}>
 					{
-						<div className="h-screen w-screen">
+						<main className=" max-w-screen ">
 							<NavBar />
 							{children}
-						</div>
+						</main>
 					}
 				</body>
 			</html>

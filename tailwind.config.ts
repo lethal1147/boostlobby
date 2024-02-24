@@ -20,6 +20,7 @@ const config = {
 		extend: {
 			colors: {
 				"main-gray": "#333333",
+				"off-gray": "#D9D9D9",
 				"main-white": "#F0F0F0",
 				"main-orange": "#FF7F50",
 				"main-orange-hover-20%": "#cc6640",
@@ -78,6 +79,9 @@ const config = {
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
+			},
+			backgroundImage: {
+				"step-line": "url('/assets/stepLine.png')",
 			},
 		},
 	},
