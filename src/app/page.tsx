@@ -1,7 +1,25 @@
+"use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+} from "@/components/ui/card";
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import { useRef, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { HiChartBar } from "react-icons/hi";
 import { IoPeopleSharp } from "react-icons/io5";
+import { Rating } from "react-simple-star-rating";
 import step1Image from "/src/app/assets/6333050-removebg-preview.png";
 import step4Image from "/src/app/assets/Completed-pana.png";
 import step2Image from "/src/app/assets/Criticalthinking-pana.png";
@@ -9,12 +27,16 @@ import step3Image from "/src/app/assets/Mobiletesting-pana.png";
 import mainImage from "/src/app/assets/hero-image.png";
 import stepLine from "/src/app/assets/stepLine.png";
 import { Button } from "./components/button";
+import { STAR_RATING_STYLES } from "./config/styling";
+import { MAIN_GRAY, MAIN_ORANGE, MAIN_WHITE } from "./constants/color";
+import TestimonialCard from "./feature/component/TestimonialCard";
 
 export default function Home() {
 	return (
 		<main className=" bg-main-white">
 			<HeroSection />
 			<HowToSection />
+			<TestimonialsSection />
 		</main>
 	);
 }
@@ -23,7 +45,7 @@ function HeroSection() {
 	return (
 		<section className="grid grid-cols-2 py-24 px-10 h-[880px]">
 			<div className="col-span-1 flex justify-center">
-				<Image className="w-full" src={mainImage} alt="Gaming" />
+				<Image priority className="w-full" src={mainImage} alt="Gaming" />
 			</div>
 			<article className="col-span-1 pl-20 pr-32 flex flex-col gap-10 pt-20">
 				<h1 className="text-3xl font-bold">
@@ -144,6 +166,104 @@ function HowToSection() {
 					alt="Step guide line"
 				/>
 			</article>
+		</section>
+	);
+}
+
+const MOCK_CUSTOMER_REVIEWS = [
+	{
+		_id: 1,
+		name: "Jack",
+		image: "https://placehold.co/200",
+		review: "This site is Goodddd",
+		score: 5,
+	},
+	{
+		_id: 2,
+		name: "Jacky",
+		image: "https://placehold.co/200",
+		review: "This site is Goodddd",
+		score: 5,
+	},
+	{
+		_id: 3,
+		name: "Jest",
+		image: "https://placehold.co/200",
+		review: "This site is Goodddd",
+		score: 4,
+	},
+	{
+		_id: 4,
+		name: "Josh",
+		image: "https://placehold.co/200",
+		review: "This site is Goodddd",
+		score: 5,
+	},
+	{
+		_id: 5,
+		name: "Nick",
+		image: "https://placehold.co/200",
+		review: "This site is Goodddd",
+		score: 3,
+	},
+	{
+		_id: 6,
+		name: "Riven",
+		image: "https://placehold.co/200",
+		review: "This site is Goodddd",
+		score: 4,
+	},
+	{
+		_id: 7,
+		name: "Sona",
+		image: "https://placehold.co/200",
+		review: "This site is so Goodddd",
+		score: 4,
+	},
+	{
+		_id: 8,
+		name: "Annie",
+		image: "https://placehold.co/200",
+		review: "This site is Goodddd",
+		score: 3,
+	},
+];
+
+function TestimonialsSection() {
+	const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
+	return (
+		<section className=" bg-main-white pb-52 flex flex-col items-center">
+			<h2 className="font-bold text-3xl pt-20 pb-10 text-center">
+				Testimonials
+			</h2>
+			<h3 className="underline font-semibold text-2xl pb-16 text-center">
+				What Our Clients Say
+			</h3>
+
+			<Carousel
+				plugins={[plugin.current]}
+				opts={{
+					align: "start",
+				}}
+				className="px-32 w-4/5"
+				onMouseEnter={plugin.current.stop}
+				onMouseLeave={plugin.current.reset}
+			>
+				<CarouselContent className="pt-16">
+					{MOCK_CUSTOMER_REVIEWS.map((customer) => (
+						<CarouselItem className="basis-1/3" key={`${customer._id}Card`}>
+							<TestimonialCard
+								review={customer.review}
+								name={customer.name}
+								image={customer.image}
+								score={customer.score}
+							/>
+						</CarouselItem>
+					))}
+				</CarouselContent>
+				<CarouselNext />
+				<CarouselPrevious />
+			</Carousel>
 		</section>
 	);
 }
