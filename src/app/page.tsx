@@ -13,12 +13,21 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Input } from "@/components/ui/input";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { HiChartBar } from "react-icons/hi";
 import { IoPeopleSharp } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
 import { Rating } from "react-simple-star-rating";
 import step1Image from "/src/app/assets/6333050-removebg-preview.png";
 import step4Image from "/src/app/assets/Completed-pana.png";
@@ -27,9 +36,11 @@ import step3Image from "/src/app/assets/Mobiletesting-pana.png";
 import mainImage from "/src/app/assets/hero-image.png";
 import stepLine from "/src/app/assets/stepLine.png";
 import { Button } from "./components/button";
+import { RootState } from "./config/configureStore";
 import { STAR_RATING_STYLES } from "./config/styling";
 import { MAIN_GRAY, MAIN_ORANGE, MAIN_WHITE } from "./constants/color";
 import TestimonialCard from "./feature/component/TestimonialCard";
+import { changeCurrentGame } from "./store/currentGameSlice";
 
 export default function Home() {
 	return (
@@ -37,6 +48,7 @@ export default function Home() {
 			<HeroSection />
 			<HowToSection />
 			<TestimonialsSection />
+			<PricingSection />
 		</main>
 	);
 }
@@ -91,7 +103,7 @@ function ServiceCard({ text, Icon }: ServiceCardProps) {
 function HowToSection() {
 	return (
 		<section className=" bg-off-gray">
-			<h2 className="font-bold text-3xl py-20 text-center">How to Get Start</h2>
+			<h2 className="section-header">How to Get Start</h2>
 			<article className="grid grid-cols-2 px-32 relative">
 				{/* step 1 */}
 				<div className="w-full h-[400px] flex justify-center">
@@ -170,7 +182,15 @@ function HowToSection() {
 	);
 }
 
-const MOCK_CUSTOMER_REVIEWS = [
+type Review = {
+	_id: number;
+	name: string;
+	image: string;
+	review: string;
+	score: number;
+};
+
+const MOCK_CUSTOMER_REVIEWS: Review[] = [
 	{
 		_id: 1,
 		name: "Jack",
@@ -233,9 +253,7 @@ function TestimonialsSection() {
 	const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
 	return (
 		<section className=" bg-main-white pb-52 flex flex-col items-center">
-			<h2 className="font-bold text-3xl pt-20 pb-10 text-center">
-				Testimonials
-			</h2>
+			<h2 className="section-header">Testimonials</h2>
 			<h3 className="underline font-semibold text-2xl pb-16 text-center">
 				What Our Clients Say
 			</h3>
@@ -264,6 +282,61 @@ function TestimonialsSection() {
 				<CarouselNext />
 				<CarouselPrevious />
 			</Carousel>
+		</section>
+	);
+}
+
+function PricingSection() {
+	const currentGame = useSelector(
+		(state: RootState) => state.currentGame.currentGame,
+	);
+	const dispatch = useDispatch();
+	const onChangeHandler = (value: string) => {
+		dispatch(changeCurrentGame({ currentGame: value }));
+	};
+	return (
+		<section className=" bg-off-gray px-32">
+			<h2 className="section-header">Pricing</h2>
+
+			<article className="grid grid-cols-5 ">
+				<div className="col-span-2 px-32 ">
+					<Select
+						defaultValue={currentGame}
+						onValueChange={(e) => onChangeHandler(e)}
+					>
+						<SelectTrigger className="w-[480px] flex justify-center h-[70px] text-4xl font-bold text-main-white text-center bg-main-gray rounded">
+							<SelectValue placeholder="Game" />
+						</SelectTrigger>
+						<SelectContent className="bg-main-white cursor-pointer">
+							<SelectItem value="valorant">Valorant</SelectItem>
+							<SelectItem value="overwatch2">Overwatch 2</SelectItem>
+							<SelectItem value="teamfightTactics">
+								Teamfight Tactics
+							</SelectItem>
+							<SelectItem value="apexLegend">Apex Legend</SelectItem>
+						</SelectContent>
+					</Select>
+				</div>
+				<div className="col-span-3 bg-main-gray p-5 rounded">
+					<div className="flex justify-between gap-10">
+						<Input
+							type="text"
+							placeholder="Regions"
+							className="bg-off-gray rounded border-none placeholder:text-main-gray"
+						/>
+						<Select>
+							<SelectTrigger className="bg-off-gray rounded border-none text-main-gray">
+								<SelectValue placeholder="Service" />
+							</SelectTrigger>
+							<SelectContent className="bg-main-white cursor-pointer">
+								<SelectItem value="light">Light</SelectItem>
+								<SelectItem value="dark">Dark</SelectItem>
+								<SelectItem value="system">System</SelectItem>
+							</SelectContent>
+						</Select>
+					</div>
+				</div>
+			</article>
 		</section>
 	);
 }

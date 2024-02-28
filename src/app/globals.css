@@ -6,4 +6,7 @@
   .underline-gray {
     @apply border-b border-gray-400 transition-all;
   }
+  .section-header {
+    @apply font-bold text-3xl pt-20 pb-10 text-center;
+  }
 }
