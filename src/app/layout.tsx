@@ -20,12 +20,7 @@ export default function RootLayout({
 		<Providers>
 			<html lang="en">
 				<body className={inter.className}>
-					{
-						<main className=" max-w-screen ">
-							<NavBar />
-							{children}
-						</main>
-					}
+					<main className=" max-w-screen ">{children}</main>
 				</body>
 			</html>
 		</Providers>
