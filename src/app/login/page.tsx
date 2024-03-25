@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import loginImage from "../assets/login-side-image.jpg";
 import { Button } from "../components/button";
-import { InputText } from "../components/input";
+import { InputText } from "../components/input/input";
 
 export default function Login() {
 	return (

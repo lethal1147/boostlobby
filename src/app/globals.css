@@ -9,4 +9,10 @@
   .section-header {
     @apply font-bold text-3xl pt-20 pb-10 text-center;
   }
+  .input-label-gray {
+    @apply text-sm font-semibold text-main-gray mb-1
+  }
+  .input-label-white {
+    @apply font-semibold text-off-gray mb-1
+  }
 }
