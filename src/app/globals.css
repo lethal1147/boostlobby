@@ -7,7 +7,7 @@
     @apply border-b border-gray-400 transition-all;
   }
   .section-header {
-    @apply font-bold text-3xl pt-20 pb-10 text-center;
+    @apply font-bold text-3xl pt-20 pb-10 text-center text-main-gray;
   }
   .input-label-gray {
     @apply text-sm font-semibold text-main-gray mb-1

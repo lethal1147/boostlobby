@@ -20,7 +20,7 @@ const InputText = ({
 		return (
 			<InputCoverWhite label={label} required={required} id={id}>
 				<Input
-					className="border-none bg-off-gray"
+					className="border-none bg-off-gray rounded"
 					disabled={disabled}
 					type={type}
 					id={id}

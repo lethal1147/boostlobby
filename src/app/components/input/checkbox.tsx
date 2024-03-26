@@ -16,7 +16,6 @@ const CheckboxInput = ({
 	onChange,
 }: CheckboxInputPropsType) => {
 	const onChangeHandler = (checked: CheckedState): void => {
-		console.log(checked);
 		const isChecked: string = checked ? "Y" : "N";
 		onChange(isChecked);
 	};

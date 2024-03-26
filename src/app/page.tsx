@@ -9,7 +9,7 @@ export default function Home() {
 	return (
 		<>
 			<NavBar />
-			<main className=" bg-main-white">
+			<main className=" bg-main-white text-main-gray">
 				<HeroSection />
 				<HowToSection />
 				<TestimonialsSection />

@@ -17,7 +17,7 @@ const initialState: PricingSliceType = {
 	priorityCompleteFlag: "N",
 	price: "0",
 	priceAfterDiscount: "0",
-	coupons: "0",
+	coupons: "",
 };
 
 const pricingSlice = createSlice({

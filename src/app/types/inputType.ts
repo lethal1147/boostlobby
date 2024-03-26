@@ -25,7 +25,7 @@ export type InputType = {
 
 export interface InputTextType extends InputPropsType {
 	value: string | number | undefined;
-	onChange: (e: React.ChangeEvent<HTMLInputElement> | string) => void;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type Option = {
