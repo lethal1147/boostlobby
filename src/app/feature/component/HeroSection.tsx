@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaCheckCircle } from "react-icons/fa";
 import { HiChartBar } from "react-icons/hi";
 import { IoPeopleSharp } from "react-icons/io5";
@@ -23,10 +24,12 @@ function HeroSection() {
 					pariatur facere, ea eveniet?
 				</p>
 
-				<Button
-					className="bg-main-orange text-white px-6 py-4 font-bold text-xl rounded hover:bg-main-orange-hover-20% transition-all shadow-md"
-					text="Game on"
-				/>
+				<Link
+					href={"/login"}
+					className="bg-main-orange text-white text-center px-6 py-4 font-bold text-xl rounded hover:bg-main-orange-hover-20% transition-all shadow-md"
+				>
+					Game on
+				</Link>
 
 				<span className="font-bold">Our services :</span>
 				<aside className="grid grid-cols-3 gap-5 text-main-white">
