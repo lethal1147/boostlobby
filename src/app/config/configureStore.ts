@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import currentGameReducer from "../store/currentGameSlice";
+import pricingSliceReducer from "../store/pricingSlice";
 
 const rootReducer = combineReducers({
 	currentGame: currentGameReducer,
+	pricing: pricingSliceReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
