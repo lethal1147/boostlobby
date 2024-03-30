@@ -28,6 +28,14 @@ export interface InputTextType extends InputPropsType {
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+export interface InputTextAreaType
+	extends InputHTMLAttributes<HTMLTextAreaElement> {
+	value: string | number | undefined;
+	onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+	cover?: "white" | "black";
+	label?: string;
+}
+
 export type Option = {
 	value: string;
 	label: string;

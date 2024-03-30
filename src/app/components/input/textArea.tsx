@@ -1,9 +1,9 @@
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import React from "react";
-import { InputTextType } from "../../types/inputType";
+import { InputTextAreaType } from "../../types/inputType";
 import { InputCoverGray, InputCoverWhite } from "./inputCover";
 
-const InputText = ({
+const InputTextArea = ({
 	value,
 	onChange,
 	type = "text",
@@ -15,14 +15,13 @@ const InputText = ({
 	required,
 	cover = "white",
 	...props
-}: InputTextType) => {
+}: InputTextAreaType) => {
 	if (cover === "white") {
 		return (
 			<InputCoverWhite label={label} required={required} id={id}>
-				<Input
+				<Textarea
 					className="border-none bg-off-gray rounded w-full"
 					disabled={disabled}
-					type={type}
 					id={id}
 					value={value}
 					onChange={onChange}
@@ -34,10 +33,9 @@ const InputText = ({
 	}
 	return (
 		<InputCoverGray label={label} required={required} id={id}>
-			<Input
+			<Textarea
 				className="border-none bg-off-gray"
 				disabled={disabled}
-				type={type}
 				id={id}
 				value={value}
 				onChange={onChange}
@@ -48,4 +46,4 @@ const InputText = ({
 	);
 };
 
-export default InputText;
+export default InputTextArea;

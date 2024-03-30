@@ -33,6 +33,7 @@ const config = {
 				"main-white-hover-20%": "#cccccc",
 				"main-white-hover-40%": "#999999",
 				"main-white-hover-60%": "#666666",
+				"disable-gray": "#909090",
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
