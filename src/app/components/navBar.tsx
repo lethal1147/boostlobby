@@ -9,6 +9,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../config/configureStore";
@@ -89,10 +90,12 @@ export const NavBar = ({ isAuthen = false }: Props) => {
 const AuthenNav = () => {
 	return (
 		<>
-			<Button
+			<Link
+				href="/login"
 				className="bg-main-orange text-white px-6 py-2 rounded hover:bg-main-orange-hover-20% transition-all"
-				text="Login"
-			/>
+			>
+				Login
+			</Link>
 		</>
 	);
 };

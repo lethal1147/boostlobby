@@ -26,7 +26,7 @@ export const InputCoverWhite = ({
 	id,
 }: InputType) => {
 	return (
-		<div className="w-full">
+		<div className="w-full text-main-gray">
 			{label && (
 				<label className="input-label-white" htmlFor={id}>
 					{label}{" "}

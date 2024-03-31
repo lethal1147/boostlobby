@@ -1,7 +1,9 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 import { useState } from "react";
+import { HiArrowSmLeft } from "react-icons/hi";
 import { Button } from "../components/button";
 import InputText from "../components/input/input";
 import InputSelect from "../components/input/select";
@@ -137,7 +139,7 @@ export default function Register() {
 	);
 
 	return (
-		<main className="h-screen w-screen bg-main-gray text-main-gray flex items-center justify-center flex-col gap-5">
+		<main className="h-screen w-screen bg-main-gray text-main-gray flex items-center justify-center flex-col gap-5 relative">
 			<>
 				<h1
 					className={`text-main-white text-6xl font-bold mb-10 transition-all dura ${
@@ -219,6 +221,12 @@ export default function Register() {
 					)}
 				</div>
 			</>
+			<Link
+				href="/login"
+				className=" size-10 flex justify-center items-center border-[3px] absolute top-5 left-5 border-off-gray hover:bg-main-white-hover-60% rounded-full"
+			>
+				<HiArrowSmLeft color="#D9D9D9" size={25} />
+			</Link>
 		</main>
 	);
 }
